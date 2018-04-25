@@ -100,4 +100,10 @@ public class Client {
 		this.idConseiller = idConseiller;
 	}
 
+	@Override
+	public String toString() {
+	return "mon client"+ getNom() + " "+ getPrenom();
+	}
+
+	
 }

@@ -1,28 +1,15 @@
 package fr.gtm.service;
 
+import fr.gtm.dao.ClientDAO;
 import fr.gtm.domaine.Client;
 
-/**
- * @author Stagiaire
- *
- */
 public class ClientService {
-	
-	/**
-	 * @paramp Client : correspond à l'objet Client contenant les informations
-	 *         rentrées dans le formulaire.
-	 * @param pConseiller
-	 *            : correspond au conseiller identifier en session.
-	 * @return retourne true si la requete bdd ne retoune pas d'exception (erreur).
-	 *         Méthode permettant de créer un objet Client en bdd. il est necessaire
-	 *         d'avoir egalement le conseiller mis en session.
-	 */
-	public boolean creationClient(Client pClient, Conseiller pConseiller) {
-		// DECLARATION DES VARIABLES LOCALES
-		ClientDAO maRefclientDAO = new ClientDAO();
 
-		// appel de la couche DAO
-		return maRefclientDAO.creationClient(pClient, pConseiller);
+	public int creerClient(Client client) {
+
+		// instanciation de la couche DAO
+		ClientDAO clientDao = new ClientDAO();
+		// appel Ã  la mÃ©thode create()couche dao
+		return clientDao.createClient(client);
 	}
-
 }

@@ -30,7 +30,7 @@ public class ClientDAO {
 
 		String url = "jdbc:mysql://localhost:3306/proxibanquebdd";
 		String utilisateur = "root";
-		String motDePasse = "";
+		String motDePasse = "root";
 		Connection connexion = null;
 
 		int resultNbChang = 0;
@@ -45,18 +45,25 @@ public class ClientDAO {
 
 			// Création de l'objet gérant les requêtes et exécution sans possibilité
 			// d'injection
-			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO client client_id=?, client_nom=?, client_prenom=?, client_adresse=?, client_cdPostal=?,client_ville=?, client_email=?,client_conseiller_i?;");
+//			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO client ( client_nom=?, client_prenom=?, client_adresse=?, client_cdPostal=?,client_ville=?, client_email=?,client_conseiller_id=?);");
+			
+			
+			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO `client`( `client_nom`, `client_prenom`, `client_adresse`, `client_cdPostal`, `client_ville`, `client_email`, `client_conseiller_id`) VALUES (?,?,?,?,?,?,?)");
 
-			preparedStatement.setInt(1, client.getIdClient());
-			preparedStatement.setString(2, client.getNom());
-			preparedStatement.setString(3, client.getPrenom());
-			preparedStatement.setString(4, client.getAdresse());
-			preparedStatement.setString(5, client.getCodePostale());
-			preparedStatement.setString(6, client.getVille());
-			preparedStatement.setString(7, client.getEmail());
-			preparedStatement.setInt(8, client.getIdConseiller());
+			
+			
+	
+			preparedStatement.setString(1, client.getNom());
+			preparedStatement.setString(2, client.getPrenom());
+			preparedStatement.setString(3, client.getAdresse());
+			preparedStatement.setString(4, client.getCodePostale());
+			preparedStatement.setString(5, client.getVille());
+			preparedStatement.setString(6, client.getEmail());
+			preparedStatement.setInt(7, client.getIdConseiller());
 			System.out.println(preparedStatement);
 
+			System.out.println("Ma requette prepareStatement : " + preparedStatement);
+			
 			resultNbChang = preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
