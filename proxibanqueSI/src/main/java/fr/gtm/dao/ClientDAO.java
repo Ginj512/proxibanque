@@ -8,9 +8,10 @@ import java.sql.SQLException;
 
 import fr.gtm.domaine.Client;
 
+
 public class ClientDAO {
 	
-	public int creationClient(Client client) {
+	public int createClient(Client client) {
 
 		// 1. CHARGEMENT DRIVER
 		// ========================================================================
